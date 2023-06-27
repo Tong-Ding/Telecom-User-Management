@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <!--引入bootstrap核心样式-->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <style>
+        .account {
+            width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 5px 5px 20px #aaa;
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+            padding: 20px 40px;
+        }
+
+        .account h2 {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="account">
+    <h2>Register as Admin</h2>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Username</label>
+            {{ form.username }}
+            <span style="color: red">{{ form.username.errors.0 }}</span>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            {{ form.password }}
+            <span style="color: red">{{ form.password.errors.0 }}</span>
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            {{ form.confirm_password }}
+            <span style="color: red">{{ form.confirm_password.errors.0 }}</span>
+        </div>
+        <input type="submit" value="Register" class="btn btn-primary">
+        <div>
+            <br>
+            <a href="/login/" class="btn-link">Already have an account? Login here</a>
+        </div>
+    </form>
+</div>
+
+<!--引入jquery核心js文件-->
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<!--引入bootstrap核心js文件-->
+<script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

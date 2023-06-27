@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    User List
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        {#新建按钮#}
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-success" href="/user/add/">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                Create a user
+            </a>
+        </div>
+
+        {#面板#}
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                User list
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Serial No.</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Password</th>
+                    <th>Age</th>
+                    <th>Balance</th>
+                    <th>Entry Time</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Operation</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in queryset %}
+                    <tr>
+                        <th>{{ forloop.counter }}</th>
+                        <td>{{ obj.id }}</td>
+                        <td>{{ obj.name }}</td>
+                        <td>{{ obj.password }}</td>
+                        <td>{{ obj.age }}</td>
+                        <td>{{ obj.account }}</td>
+                        <td>{{ obj.create_time | date:"Y-m-d" }}</td>
+                        <td>{{ obj.get_gender_display }}</td>
+                        <td>{{ obj.depart.title }}</td>
+                        <td>
+                            <a href="/user/{{ obj.id }}/edit/" class="btn btn-primary btn-xs">Edit</a>
+                            <a href="/user/{{ obj.id }}/delete/" class="btn btn-danger btn-xs">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {# 分页 #}
+        <ul class='pagination'>
+            {{ page_string }}
+        </ul>
+
+    </div>
+{% endblock content %}

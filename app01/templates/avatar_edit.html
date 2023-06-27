@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Change avatar
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        {#面板#}
+        <div class="panel panel-default">
+            <div class="panel-heading">Change avatar</div>
+            <div class="panel-body">
+                {#表单#}
+                <form method="post" novalidate enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="avatar">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
