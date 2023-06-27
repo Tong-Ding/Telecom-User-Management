@@ -1,7 +1,7 @@
-# Telecom-User-Management
+# Telecom User Management System
 
 
-Framework and tools: Django, MySQL, MySQL
+Framework and tools: Django, MySQL, Bootstrap
 
 
 
